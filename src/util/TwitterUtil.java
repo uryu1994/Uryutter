@@ -16,10 +16,10 @@ public class TwitterUtil {
 
     public static TwitterStream twitterStream;
 
-    private static final String oAuthConsumerKey = "IcjtgtDmwBvKy5ZydcrO7ti60";
-    private static final String oAuthConsumerSecret = "mjPhhN1ruBg21YvwX70AeRhaT4HJ2vjMPI9eIdTThrLdZegkLF";
-    private static final String oAuthAccessToken = "82797524-Ci7u0m7xiQxXIybjuHoTMGZjxrYuqsifHSzoyM797";
-    private static final String oAuthAccessTokenSecret = "giZbz5wsesbkRRYv0uQaSUN3bsxpmSdLPOWeqsz4voN7d";
+    private static final String oAuthConsumerKey = "";
+    private static final String oAuthConsumerSecret = "";
+    private static final String oAuthAccessToken = "";
+    private static final String oAuthAccessTokenSecret = "";
 
     private String myName;
     private String myId;
