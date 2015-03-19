@@ -10,7 +10,7 @@ public class StreamUtil extends UserStreamAdapter {
         super.onStatus(status);
         System.out.println(status.getUser().getScreenName());
 
-        MainViewController.mainViewController.observableList.add(0, status);
+        MainViewController.observableList.add(0, status);
     }
     
 }

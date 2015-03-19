@@ -13,8 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class TweetPaneController extends ListCell<Status> {
-
-    private Status status;
     
     @FXML
     private AnchorPane theColumn;
@@ -51,8 +49,6 @@ public class TweetPaneController extends ListCell<Status> {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
-        this.status = status;
         
         userName.setText(status.getUser().getName());
         userId.setText("@"+status.getUser().getScreenName());

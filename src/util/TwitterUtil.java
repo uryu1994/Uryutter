@@ -9,23 +9,15 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;
-import twitter4j.conf.ConfigurationBuilder;
-import twitter4j.conf.Configuration;
 
 public class TwitterUtil {
 
     public static TwitterStream twitterStream;
 
-    private static final String oAuthConsumerKey = "";
-    private static final String oAuthConsumerSecret = "";
-    private static final String oAuthAccessToken = "";
-    private static final String oAuthAccessTokenSecret = "";
-
     private String myName;
     private String myId;
     private Image myIcon;
 
-    Configuration config;
     public static TwitterFactory tf;
     Twitter twitter;
     Status status;
@@ -33,15 +25,7 @@ public class TwitterUtil {
 
     public TwitterUtil() {
 
-        config = new ConfigurationBuilder()
-        .setDebugEnabled(true)
-        .setOAuthConsumerKey(oAuthConsumerKey)
-        .setOAuthConsumerSecret(oAuthConsumerSecret)
-        .setOAuthAccessToken(oAuthAccessToken)
-        .setOAuthAccessTokenSecret(oAuthAccessTokenSecret)
-        .build();
-
-        tf = new TwitterFactory(config);
+        tf = new TwitterFactory();
         twitter = tf.getInstance();
         
         try {
@@ -51,7 +35,7 @@ public class TwitterUtil {
             e1.printStackTrace();
         }
         
-        twitterStream = new TwitterStreamFactory(config).getInstance();
+        twitterStream = new TwitterStreamFactory().getInstance();
         twitterStream.addListener(new StreamUtil());
         twitterStream.user();
 
