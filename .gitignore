@@ -1,9 +1,23 @@
-*.class
-# Package Files #
-*.jar
-*.war
-*.ear
-*/bin
-*bin
-*.bin
-*bin
+# This project using maven for management
+.project
+.classpath
+.idea
+dependency-reduced-pom.xml
+
+# Stealed from https://github.com/github/gitignore/blob/master/Global/Eclipse\
+.gitignore
+*.pydevproject
+.metadata
+.gradle
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+
+.target
+/target
