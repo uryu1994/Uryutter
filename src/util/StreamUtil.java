@@ -11,17 +11,21 @@ public class StreamUtil extends UserStreamAdapter {
 
     public void onStatus(Status status) {
         super.onStatus(status);
-        MainViewController.observableList.add(0, status);
-        
-        // 昆布が健全と言い張っているときにリプを出す
-        if(status.getUser().getScreenName()==("KNB623")&&status.getText().contains("健全")) {
-            try {
-                TwitterFactory.getSingleton().updateStatus("@KNB623 ダウト");
-            } catch (TwitterException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+        MainViewController.homeTimeLine_O.add(0, status);
+
+        if("prices_over".equals(status.getInReplyToScreenName())) {
+            MainViewController.mentionList_O.add(0, status);
         }
+
+//        // 昆布が健全と言い張っているときにリプを出す
+//        if(status.getUser().getScreenName()==("KNB623")&&status.getText().contains("健全")) {
+//            try {
+//                TwitterFactory.getSingleton().updateStatus("@KNB623 ダウト");
+//            } catch (TwitterException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     public void onFavorite(User source, User target, Status favoritedStatus) {

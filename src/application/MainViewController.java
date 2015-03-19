@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import twitter4j.Status;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
 import util.TwitterUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,8 +25,11 @@ public class MainViewController implements Initializable {
     public static MainViewController mainViewController;
 
     public TwitterUtil twitterUtil;
-    public static ObservableList<Status> observableList = FXCollections.observableArrayList();
-
+    
+    public static ObservableList<Status> homeTimeLine_O = FXCollections.observableArrayList();
+    public static ObservableList<Status> mentionList_O = FXCollections.observableArrayList();
+    
+    
     @FXML
     public TextArea newTweet;
 
@@ -42,6 +47,9 @@ public class MainViewController implements Initializable {
 
     @FXML
     public ListView<Status> homeTimeLine;
+    
+    @FXML
+    public ListView<Status> mentionList;
 
     @FXML
     protected void tweetAction(ActionEvent ev) {
@@ -67,9 +75,9 @@ public class MainViewController implements Initializable {
         userId.setText("@"+twitterUtil.getMyId());
         userIcon.setImage(twitterUtil.getMyIcon());
         
-        observableList = homeTimeLine.getItems();
-        observableList.setAll(twitterUtil.getList());
-        homeTimeLine.setItems(observableList);
+        homeTimeLine_O = homeTimeLine.getItems();
+        homeTimeLine_O.setAll(twitterUtil.getList());
+        homeTimeLine.setItems(homeTimeLine_O);
         homeTimeLine
         .setCellFactory(new Callback<ListView<Status>, ListCell<Status>>() {
 
@@ -79,6 +87,19 @@ public class MainViewController implements Initializable {
                 return new TweetCell();
             }
 
+        });
+        
+        mentionList_O = mentionList.getItems();
+        mentionList_O.setAll(twitterUtil.getMentionList());
+        mentionList.setItems(mentionList_O);
+        mentionList.setCellFactory(new Callback<ListView<Status>, ListCell<Status>>() {
+
+            @Override
+            public ListCell<Status> call(ListView<Status> param) {
+                // TODO Auto-generated method stub
+                return new TweetCell();
+            }
+            
         });
         
         mainViewController = this;

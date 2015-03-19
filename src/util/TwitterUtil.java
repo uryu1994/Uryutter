@@ -22,6 +22,7 @@ public class TwitterUtil {
     Twitter twitter;
     Status status;
     private List<Status> list;
+    private List<Status> mentionList;
 
     public TwitterUtil() {
 
@@ -30,6 +31,13 @@ public class TwitterUtil {
         
         try {
             list = tf.getInstance().getHomeTimeline();
+        } catch (TwitterException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        
+        try {
+            mentionList = tf.getInstance().getMentionsTimeline();
         } catch (TwitterException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -77,6 +85,14 @@ public class TwitterUtil {
 
     public void setList(List<Status> list) {
         this.list = list;
+    }
+
+    public List<Status> getMentionList() {
+        return mentionList;
+    }
+
+    public void setMentionList(List<Status> mentionList) {
+        this.mentionList = mentionList;
     }
 
 }
