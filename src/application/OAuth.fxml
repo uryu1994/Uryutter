@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <FlowPane prefHeight="307.0" prefWidth="497.0" BorderPane.alignment="CENTER">
+         <children>
+            <PasswordField prefHeight="22.0" prefWidth="267.0" />
+            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="88.0" text="OK" />
+         </children>
+      </FlowPane>
+   </center>
+   <top>
+      <Label prefHeight="93.0" prefWidth="438.0" text="PINコードを入力してください" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+   </top>
+</BorderPane>
