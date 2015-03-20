@@ -40,7 +40,7 @@ public class TweetPaneController extends ListCell<Status> {
 
     public TweetPaneController(Status status) {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("TweetPane.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("View/TweetPane.fxml"));
         loader.setController(this);
 
         try {

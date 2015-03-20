@@ -8,14 +8,15 @@ import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
+    
     @Override
     public void start(Stage primaryStage) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource(
-                    "MainView.fxml"));
+                    "View/MainView.fxml"));
             Scene scene = new Scene(root);
             scene.getStylesheets().add(
-                    getClass().getResource("application.css").toExternalForm());
+                    getClass().getResource("View/application.css").toExternalForm());
             primaryStage.setScene(scene);
             primaryStage.setTitle("Uryutter");
             primaryStage.show();
