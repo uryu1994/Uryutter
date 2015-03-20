@@ -20,15 +20,20 @@ public class TwitterUtil {
 
     public static TwitterStream twitterStream;
     public OAuthInfo oAuthInfo;
+
     private String myName;
     private String myId;
     private Image myIcon;
 
+    public static TwitterFactory tf;
     Twitter twitter;
     Status status;
     private List<Status> list;
+    private List<Status> mentionList;
 
     public TwitterUtil() {
+        tf = new TwitterFactory();
+        twitter = tf.getInstance();
         
         oAuthInfo = new OAuthInfo();
         
@@ -54,6 +59,15 @@ public class TwitterUtil {
         }
 
         twitterStream = new TwitterStreamFactory().getInstance(oAuthInfo.getAccessToken());
+
+        try {
+            mentionList = tf.getInstance().getMentionsTimeline();
+        } catch (TwitterException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        
+        twitterStream = new TwitterStreamFactory().getInstance();
         twitterStream.addListener(new StreamUtil());
         twitterStream.user();
 
@@ -95,6 +109,14 @@ public class TwitterUtil {
 
     public void setList(List<Status> list) {
         this.list = list;
+    }
+
+    public List<Status> getMentionList() {
+        return mentionList;
+    }
+
+    public void setMentionList(List<Status> mentionList) {
+        this.mentionList = mentionList;
     }
 
 }
