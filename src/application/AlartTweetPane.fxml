@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+
+<Pane id="AlartPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AlartTweetPaneController">
+   <children>
+      <HBox layoutX="9.0" layoutY="6.0" prefHeight="70.0" prefWidth="343.0">
+         <children>
+            <ImageView fx:id="userImage" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" />
+            <FlowPane prefHeight="90.0" prefWidth="282.0">
+               <children>
+                  <Label fx:id="userName" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="131.0" text="UserName" textAlignment="CENTER" textOverrun="CLIP">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                  </Label>
+                  <Label fx:id="userScreenName" prefHeight="16.0" prefWidth="83.0" text="UserScreenName" underline="true">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tweet" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="273.0" text="Label" wrapText="true">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <FlowPane.margin>
+                        <Insets top="5.0" />
+                     </FlowPane.margin>
+                  </Label>
+               </children>
+            </FlowPane>
+         </children>
+      </HBox>
+   </children>
+</Pane>
