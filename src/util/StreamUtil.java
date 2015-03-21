@@ -1,6 +1,7 @@
 package util;
 
 import javafx.application.Platform;
+import application.AlartManager;
 import application.MainViewController;
 import twitter4j.Status;
 import twitter4j.User;
@@ -18,12 +19,17 @@ public class StreamUtil extends UserStreamAdapter {
 
                 if(new String("prices_over").equals(status.getInReplyToScreenName())) {
                     MainViewController.mentionList_O.add(0, status);
+                    Platform.runLater(() -> {
+                        AlartManager.getInstance().createAlart(status);
+                    });
                 }
+                
             }
 
         });
 
     }
+    
 
     public void onFavorite(User source, User target, Status favoritedStatus) {
         super.onFavorite(source, target, favoritedStatus);

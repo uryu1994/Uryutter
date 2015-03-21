@@ -1,16 +1,14 @@
 package application;
 
-import java.io.IOException;
-
-import twitter4j.Status;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class AlartTweetPaneController extends Stage {
+    
+    private int num;
+    private Stage stage;
     
     @FXML
     private ImageView userImage;
@@ -23,24 +21,54 @@ public class AlartTweetPaneController extends Stage {
     
     @FXML
     private Label tweet;
-    
-    public AlartTweetPaneController(Status status) {
-        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AlartTweetPane.fxml"));
-        loader.setController(this);
 
-        try {
-            loader.load();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        
-        userImage.setImage(new Image(status.getUser().getOriginalProfileImageURL()));
-        userName.setText(status.getUser().getName());
-        userScreenName.setText(status.getUser().getScreenName());
-        tweet.setText(status.getText());
-        
+    public ImageView getUserImage() {
+        return userImage;
     }
+
+    public void setUserImage(ImageView userImage) {
+        this.userImage = userImage;
+    }
+
+    public Label getUserName() {
+        return userName;
+    }
+
+    public void setUserName(Label userName) {
+        this.userName = userName;
+    }
+
+    public Label getUserScreenName() {
+        return userScreenName;
+    }
+
+    public void setUserScreenName(Label userScreenName) {
+        this.userScreenName = userScreenName;
+    }
+
+    public Label getTweet() {
+        return tweet;
+    }
+
+    public void setTweet(Label tweet) {
+        this.tweet = tweet;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+    
     
 }
