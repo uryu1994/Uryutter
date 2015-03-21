@@ -4,8 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import twitter4j.Status;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
 import util.TwitterUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,7 +26,6 @@ public class MainViewController implements Initializable {
     
     public static ObservableList<Status> homeTimeLine_O = FXCollections.observableArrayList();
     public static ObservableList<Status> mentionList_O = FXCollections.observableArrayList();
-    
     
     @FXML
     public TextArea newTweet;
