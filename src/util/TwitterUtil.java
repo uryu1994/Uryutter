@@ -9,6 +9,9 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;
+import twitter4j.auth.OAuthAuthorization;
+import twitter4j.conf.Configuration;
+import twitter4j.conf.ConfigurationBuilder;
 
 public class TwitterUtil {
 
@@ -17,37 +20,25 @@ public class TwitterUtil {
     private String myName;
     private String myId;
     private Image myIcon;
-
-    public static TwitterFactory tf;
-    Twitter twitter;
+    
     Status status;
+    Twitter twitter;
     private List<Status> list;
     private List<Status> mentionList;
 
     public TwitterUtil() {
 
-        tf = new TwitterFactory();
-        twitter = tf.getInstance();
-        
-        try {
-            list = tf.getInstance().getHomeTimeline();
-        } catch (TwitterException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-        
-        try {
-            mentionList = tf.getInstance().getMentionsTimeline();
-        } catch (TwitterException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-        
-        twitterStream = new TwitterStreamFactory().getInstance();
-        twitterStream.addListener(new StreamUtil());
-        twitterStream.user();
-
-        try {
+        try {            
+            Configuration conf = new ConfigurationBuilder().build();
+            OAuthAuthorization oauth = new OAuthAuthorization(conf);
+            oauth.setOAuthConsumer(OAuthUtil.getoAuthInfo().getConsumer(), OAuthUtil.getoAuthInfo().getConsumer_Secret());
+            oauth.setOAuthAccessToken(OAuthUtil.getAccessToken());
+            twitter = new TwitterFactory().getInstance(oauth);
+            list = twitter.getHomeTimeline();
+            mentionList = twitter.getMentionsTimeline();
+            twitterStream = new TwitterStreamFactory().getInstance(oauth);
+            twitterStream.addListener(new StreamUtil());
+            twitterStream.user();
             myName = twitter.verifyCredentials().getName();
             myId = twitter.verifyCredentials().getScreenName();
             myIcon = new Image(twitter.verifyCredentials().getBiggerProfileImageURL());
@@ -66,7 +57,7 @@ public class TwitterUtil {
             e.printStackTrace();
         }
     }
-    
+
     public String getMyName() {
         return myName;
     }
