@@ -3,6 +3,7 @@ package application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class AlartTweetPaneController extends Stage {
@@ -21,6 +22,11 @@ public class AlartTweetPaneController extends Stage {
     
     @FXML
     private Label tweet;
+    
+    @FXML
+    protected void closePane(MouseEvent e) {
+        AlartManager.getInstance().hideAlart(num);
+    }
 
     public ImageView getUserImage() {
         return userImage;
@@ -69,6 +75,5 @@ public class AlartTweetPaneController extends Stage {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
-    
     
 }
