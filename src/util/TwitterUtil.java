@@ -2,76 +2,43 @@ package util;
 
 import java.util.List;
 
-import model.OAuthInfo;
 import javafx.scene.image.Image;
-import javafx.scene.web.WebView;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.TwitterStream;
 import twitter4j.TwitterStreamFactory;
-import twitter4j.auth.AccessToken;
-import twitter4j.auth.RequestToken;
-import twitter4j.conf.ConfigurationBuilder;
+import twitter4j.auth.OAuthAuthorization;
 import twitter4j.conf.Configuration;
+import twitter4j.conf.ConfigurationBuilder;
 
 public class TwitterUtil {
 
     public static TwitterStream twitterStream;
-    public OAuthInfo oAuthInfo;
 
     private String myName;
     private String myId;
     private Image myIcon;
-
-    public static TwitterFactory tf;
-    Twitter twitter;
+    
     Status status;
+    Twitter twitter;
     private List<Status> list;
     private List<Status> mentionList;
 
     public TwitterUtil() {
-        tf = new TwitterFactory();
-        twitter = tf.getInstance();
-        
-        oAuthInfo = new OAuthInfo();
-        
-        twitter = TwitterFactory.getSingleton();
-        twitter.setOAuthConsumer(OAuthInfo.getConsumerKey(), OAuthInfo.getConsumerKeySecret());
-        
-        try {
-            oAuthInfo.setRequestToken(twitter.getOAuthRequestToken());
-            oAuthInfo.setUrl(oAuthInfo.getUrl());
-        } catch (TwitterException e2) {
-            // TODO Auto-generated catch block
-            e2.printStackTrace();
-        }
-        
-        WebView webview = new WebView();
-        webview.getEngine().load(oAuthInfo.getUrl());
 
-        try {
+        try {            
+            Configuration conf = new ConfigurationBuilder().build();
+            OAuthAuthorization oauth = new OAuthAuthorization(conf);
+            oauth.setOAuthConsumer(OAuthUtil.getoAuthInfo().getConsumer(), OAuthUtil.getoAuthInfo().getConsumer_Secret());
+            oauth.setOAuthAccessToken(OAuthUtil.getAccessToken());
+            twitter = new TwitterFactory().getInstance(oauth);
             list = twitter.getHomeTimeline();
-        } catch (TwitterException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-
-        twitterStream = new TwitterStreamFactory().getInstance(oAuthInfo.getAccessToken());
-
-        try {
-            mentionList = tf.getInstance().getMentionsTimeline();
-        } catch (TwitterException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
-        
-        twitterStream = new TwitterStreamFactory().getInstance();
-        twitterStream.addListener(new StreamUtil());
-        twitterStream.user();
-
-        try {
+            mentionList = twitter.getMentionsTimeline();
+            twitterStream = new TwitterStreamFactory().getInstance(oauth);
+            twitterStream.addListener(new StreamUtil());
+            twitterStream.user();
             myName = twitter.verifyCredentials().getName();
             myId = twitter.verifyCredentials().getScreenName();
             myIcon = new Image(twitter.verifyCredentials().getBiggerProfileImageURL());

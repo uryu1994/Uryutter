@@ -102,5 +102,9 @@ public class MainViewController implements Initializable {
         mainViewController = this;
 
     }
+    
+    public void stop() {
+        TwitterUtil.twitterStream.shutdown();
+    }
 
 }
