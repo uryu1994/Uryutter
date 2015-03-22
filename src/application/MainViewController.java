@@ -63,9 +63,9 @@ public class MainViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         twitterUtil = new TwitterUtil();
 
-        userName.setText(twitterUtil.getMyName());
-        userId.setText("@"+twitterUtil.getMyId());
-        userIcon.setImage(twitterUtil.getMyIcon());
+        userName.setText(TwitterUtil.getMyName());
+        userId.setText("@"+TwitterUtil.getMyId());
+        userIcon.setImage(TwitterUtil.getMyIcon());
 
         newTweet.textProperty().addListener(new InvalidationListener() {
             
