@@ -3,6 +3,7 @@ package application;
 import java.io.IOException;
 
 import twitter4j.Status;
+import util.TwitterUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -13,7 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class TweetPaneController extends ListCell<Status> {
-    
+
     @FXML
     private AnchorPane theColumn;
 
@@ -49,7 +50,7 @@ public class TweetPaneController extends ListCell<Status> {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+
         userName.setText(status.getUser().getName());
         userId.setText("@"+status.getUser().getScreenName());
         tweetContent.setText(status.getText());

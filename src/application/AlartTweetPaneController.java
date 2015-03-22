@@ -4,12 +4,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class AlartTweetPaneController extends Stage {
     
     private int num;
     private Stage stage;
+    
+    @FXML
+    private Pane pane;
     
     @FXML
     private ImageView userImage;
@@ -74,6 +78,14 @@ public class AlartTweetPaneController extends Stage {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public Pane getPane() {
+        return pane;
+    }
+
+    public void setPane(Pane pane) {
+        this.pane = pane;
     }
     
 }

@@ -21,9 +21,9 @@ public class TwitterUtil {
 
     public static TwitterStream twitterStream;
 
-    private String myName;
-    private String myId;
-    private Image myIcon;
+    private static String myName;
+    private static String myId;
+    private static Image myIcon;
     
     Status status;
     Twitter twitter;
@@ -53,7 +53,6 @@ public class TwitterUtil {
 
     }
 
-    
     /**
      * ツイート処理をする
      * @param t ツイート内容がかかれたツイート
@@ -65,18 +64,6 @@ public class TwitterUtil {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    }
-
-    public String getMyName() {
-        return myName;
-    }
-
-    public String getMyId() {
-        return myId;
-    }
-
-    public Image getMyIcon() {
-        return myIcon;
     }
 
     public List<Status> getList() {
@@ -93,6 +80,18 @@ public class TwitterUtil {
 
     public void setMentionList(List<Status> mentionList) {
         this.mentionList = mentionList;
+    }
+
+    public static String getMyName() {
+        return myName;
+    }
+
+    public static String getMyId() {
+        return myId;
+    }
+
+    public static Image getMyIcon() {
+        return myIcon;
     }
 
 }
