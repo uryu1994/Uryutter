@@ -37,7 +37,7 @@
             </AnchorPane>
           <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="25.0" prefWidth="350.0" SplitPane.resizableWithParent="false">
                <children>
-                  <Button fx:id="tweetButton" layoutX="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#tweetAction" prefHeight="25.0" prefWidth="58.0" text="Tweet">
+                  <Button fx:id="tweetButton" disable="true" layoutX="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#tweetAction" prefHeight="25.0" prefWidth="58.0" text="Tweet">
                      <font>
                         <Font size="12.0" />
                      </font>

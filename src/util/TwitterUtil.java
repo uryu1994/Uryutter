@@ -13,6 +13,10 @@ import twitter4j.auth.OAuthAuthorization;
 import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 
+/**
+ * @author prices_over
+ *
+ */
 public class TwitterUtil {
 
     public static TwitterStream twitterStream;
@@ -49,6 +53,11 @@ public class TwitterUtil {
 
     }
 
+    
+    /**
+     * ツイート処理をする
+     * @param t ツイート内容がかかれたツイート
+     */
     public void tweet(String t) {
         try {
             status = twitter.updateStatus(t);

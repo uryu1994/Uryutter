@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import twitter4j.Status;
 import util.TwitterUtil;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,14 +21,14 @@ import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
 public class MainViewController implements Initializable {
-    
+
     public static MainViewController mainViewController;
 
     public TwitterUtil twitterUtil;
-    
+
     public static ObservableList<Status> homeTimeLine_O = FXCollections.observableArrayList();
     public static ObservableList<Status> mentionList_O = FXCollections.observableArrayList();
-    
+
     @FXML
     public TextArea newTweet;
 
@@ -38,29 +40,22 @@ public class MainViewController implements Initializable {
 
     @FXML
     public Label userId;
-    
+
     @FXML
     public Button tweetButton;
 
     @FXML
     public ListView<Status> homeTimeLine;
-    
+
     @FXML
     public ListView<Status> mentionList;
 
     @FXML
     protected void tweetAction(ActionEvent ev) {
         String tweetText = newTweet.getText();
-        twitterUtil.tweet(tweetText);
-        newTweet.setText("");
-    }
-    
-    @FXML
-    protected void tweetButtonAction(ActionEvent ev) {
-        if(newTweet.getText().compareTo(null)!=0) {
-            tweetButton.setDisable(true);
-        } else {
-            tweetButton.setDisable(false);
+        if(!tweetText.equals("")) {
+            twitterUtil.tweet(tweetText);
+            newTweet.setText("");
         }
     }
 
@@ -71,21 +66,34 @@ public class MainViewController implements Initializable {
         userName.setText(twitterUtil.getMyName());
         userId.setText("@"+twitterUtil.getMyId());
         userIcon.setImage(twitterUtil.getMyIcon());
-        
+
+        newTweet.textProperty().addListener(new InvalidationListener() {
+            
+            // 入力検知(何も入ってなければツイートボタンを無効)
+            @Override
+            public void invalidated(Observable observable) {
+                // TODO Auto-generated method stub
+                if(!newTweet.getText().equals("")) {
+                    tweetButton.setDisable(false);
+                } else {
+                    tweetButton.setDisable(true);
+                }
+            }
+
+        });
+
         homeTimeLine_O = homeTimeLine.getItems();
         homeTimeLine_O.setAll(twitterUtil.getList());
         homeTimeLine.setItems(homeTimeLine_O);
         homeTimeLine
         .setCellFactory(new Callback<ListView<Status>, ListCell<Status>>() {
-
             @Override
             public ListCell<Status> call(ListView<Status> param) {
                 // TODO Auto-generated method stub
                 return new TweetCell();
             }
-
         });
-        
+
         mentionList_O = mentionList.getItems();
         mentionList_O.setAll(twitterUtil.getMentionList());
         mentionList.setItems(mentionList_O);
@@ -96,11 +104,8 @@ public class MainViewController implements Initializable {
                 // TODO Auto-generated method stub
                 return new TweetCell();
             }
-            
         });
-        
         mainViewController = this;
-
     }
 
 }
