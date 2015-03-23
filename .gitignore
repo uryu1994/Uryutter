@@ -23,3 +23,4 @@ local.properties
 .target
 /target
 twitter4j.properties
+.key.dat

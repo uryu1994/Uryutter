@@ -29,11 +29,11 @@ public class OAuthUtil {
 
     public void readOAuthInfo(Stage primaryStage) throws Exception {
         oAuthInfo = new OAuthInfo();
-        File file = new File("target/key.dat");
+        File file = new File(".key.dat");
         if(!file.exists()) {
             createAccessToken();
         } else {
-            FileInputStream fis = new FileInputStream("target/key.dat");
+            FileInputStream fis = new FileInputStream(".key.dat");
             ObjectInputStream in = new ObjectInputStream(fis);
             oAuthInfo = (OAuthInfo) in.readObject();
             in.close();
@@ -85,7 +85,7 @@ public class OAuthUtil {
     }
 
     public static void writeOAuthInfo() throws Exception {
-        FileOutputStream fout = new FileOutputStream("target/key.dat");
+        FileOutputStream fout = new FileOutputStream(".key.dat");
         ObjectOutputStream oout = new ObjectOutputStream(fout);
 
         oout.writeObject(oAuthInfo);
