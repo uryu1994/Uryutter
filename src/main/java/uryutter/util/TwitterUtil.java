@@ -1,4 +1,4 @@
-package util;
+package uryutter.util;
 
 import java.util.List;
 

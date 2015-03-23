@@ -1,4 +1,4 @@
-package application;
+package uryutter.application;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import twitter4j.Status;
 import twitter4j.User;
-import util.TwitterUtil;
+import uryutter.util.TwitterUtil;
 import javafx.application.Platform;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +27,7 @@ public class AlartManager {
     }
     
     public void createRTAlart(Status status) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AlartTweetPane.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AlartTweetPane.fxml"));
         try {
             loader.load();
             Parent root = loader.getRoot();
@@ -55,7 +55,7 @@ public class AlartManager {
     }
     
     public void createFavAlart(Status status, User favUser) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AlartTweetPane.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AlartTweetPane.fxml"));
         try {
             loader.load();
             Parent root = loader.getRoot();
@@ -83,7 +83,7 @@ public class AlartManager {
     }
 
     public void createAlart(Status status) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AlartTweetPane.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AlartTweetPane.fxml"));
         try {
             loader.load();
             Parent root = loader.getRoot();

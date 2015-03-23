@@ -1,9 +1,9 @@
-package application;
+package uryutter.application;
 
 import java.io.IOException;
 
 import twitter4j.Status;
-import util.TwitterUtil;
+import uryutter.util.TwitterUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -41,7 +41,7 @@ public class TweetPaneController extends ListCell<Status> {
 
     public TweetPaneController(Status status) {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("TweetPane.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TweetPane.fxml"));
         loader.setController(this);
 
         try {

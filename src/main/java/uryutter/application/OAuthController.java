@@ -1,9 +1,9 @@
-package application;
+package uryutter.application;
 
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
-import util.OAuthUtil;
+import uryutter.util.OAuthUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,10 +43,10 @@ public class OAuthController {
                 Stage primaryStage = new Stage(StageStyle.DECORATED);
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource(
-                            "MainView.fxml"));
+                            "/fxml/MainView.fxml"));
                     Scene scene = new Scene(root);
                     scene.getStylesheets().add(
-                            getClass().getResource("application.css").toExternalForm());
+                            getClass().getResource("/styles/application.css").toExternalForm());
                     primaryStage.setScene(scene);
                     primaryStage.setTitle("Uryutter");
                     primaryStage.show();

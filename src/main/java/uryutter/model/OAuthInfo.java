@@ -1,4 +1,4 @@
-package model;
+package uryutter.model;
 
 import java.io.Serializable;
 
