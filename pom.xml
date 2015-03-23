@@ -11,7 +11,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <mainClass>org.uryu1994.uryutter.application.Main</mainClass>
+    <mainClass>uryutter.application.Main</mainClass>
   </properties>
 
   <organization>
@@ -47,7 +47,6 @@
         <executions>
           <execution>
             <id>unpack-dependencies</id>
-
             <phase>package</phase>
             <goals>
               <goal>exec</goal>
