@@ -42,10 +42,10 @@ public class OAuthUtil {
 
             try {
                 Parent root = FXMLLoader.load(getClass().getResource(
-                        "../application/MainView.fxml"));
+                        "/fxml/MainView.fxml"));
                 Scene scene = new Scene(root);
                 scene.getStylesheets().add(
-                        getClass().getResource("../application/application.css").toExternalForm());
+                        getClass().getResource("/styles/application.css").toExternalForm());
                 primaryStage.setScene(scene);
                 primaryStage.setTitle("Uryutter");
                 primaryStage.show();
@@ -64,7 +64,7 @@ public class OAuthUtil {
             e1.printStackTrace();
         }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../application/OAuth.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OAuth.fxml"));
         try {
             loader.load();
         } catch (IOException e) {

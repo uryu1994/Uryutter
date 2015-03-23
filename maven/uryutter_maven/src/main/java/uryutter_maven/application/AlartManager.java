@@ -27,7 +27,7 @@ public class AlartManager {
     }
     
     public void createRTAlart(Status status) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AlartTweetPane.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AlartTweetPane.fxml"));
         try {
             loader.load();
             Parent root = loader.getRoot();
@@ -55,7 +55,7 @@ public class AlartManager {
     }
     
     public void createFavAlart(Status status, User favUser) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AlartTweetPane.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AlartTweetPane.fxml"));
         try {
             loader.load();
             Parent root = loader.getRoot();
@@ -83,7 +83,7 @@ public class AlartManager {
     }
 
     public void createAlart(Status status) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("AlartTweetPane.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AlartTweetPane.fxml"));
         try {
             loader.load();
             Parent root = loader.getRoot();

@@ -43,10 +43,10 @@ public class OAuthController {
                 Stage primaryStage = new Stage(StageStyle.DECORATED);
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource(
-                            "MainView.fxml"));
+                            "/fxml/MainView.fxml"));
                     Scene scene = new Scene(root);
                     scene.getStylesheets().add(
-                            getClass().getResource("application.css").toExternalForm());
+                            getClass().getResource("/styles/application.css").toExternalForm());
                     primaryStage.setScene(scene);
                     primaryStage.setTitle("Uryutter");
                     primaryStage.show();
