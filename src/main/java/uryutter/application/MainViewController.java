@@ -1,10 +1,10 @@
-package uryutter_maven.application;
+package uryutter.application;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import twitter4j.Status;
-import uryutter_maven.util.TwitterUtil;
+import uryutter.util.TwitterUtil;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;

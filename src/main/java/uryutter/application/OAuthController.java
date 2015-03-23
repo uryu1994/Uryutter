@@ -1,9 +1,9 @@
-package uryutter_maven.application;
+package uryutter.application;
 
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
-import uryutter_maven.util.OAuthUtil;
+import uryutter.util.OAuthUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

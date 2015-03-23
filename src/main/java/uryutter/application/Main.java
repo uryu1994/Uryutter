@@ -1,7 +1,7 @@
-package uryutter_maven.application;
+package uryutter.application;
 
-import uryutter_maven.util.OAuthUtil;
-import uryutter_maven.util.TwitterUtil;
+import uryutter.util.OAuthUtil;
+import uryutter.util.TwitterUtil;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

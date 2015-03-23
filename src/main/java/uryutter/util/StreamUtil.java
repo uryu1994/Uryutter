@@ -1,8 +1,8 @@
-package uryutter_maven.util;
+package uryutter.util;
 
 import javafx.application.Platform;
-import uryutter_maven.application.AlartManager;
-import uryutter_maven.application.MainViewController;
+import uryutter.application.AlartManager;
+import uryutter.application.MainViewController;
 import twitter4j.Status;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;

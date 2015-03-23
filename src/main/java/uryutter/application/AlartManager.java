@@ -1,4 +1,4 @@
-package uryutter_maven.application;
+package uryutter.application;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import twitter4j.Status;
 import twitter4j.User;
-import uryutter_maven.util.TwitterUtil;
+import uryutter.util.TwitterUtil;
 import javafx.application.Platform;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXMLLoader;

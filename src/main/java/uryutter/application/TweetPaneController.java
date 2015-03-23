@@ -1,9 +1,9 @@
-package uryutter_maven.application;
+package uryutter.application;
 
 import java.io.IOException;
 
 import twitter4j.Status;
-import uryutter_maven.util.TwitterUtil;
+import uryutter.util.TwitterUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;

@@ -1,4 +1,4 @@
-package uryutter_maven.application;
+package uryutter.application;
 
 import twitter4j.Status;
 import javafx.scene.control.ListCell;

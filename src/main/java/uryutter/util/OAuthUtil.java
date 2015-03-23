@@ -1,4 +1,4 @@
-package uryutter_maven.util;
+package uryutter.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,13 +11,13 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
-import uryutter_maven.application.OAuthController;
+import uryutter.application.OAuthController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import uryutter_maven.model.OAuthInfo;
+import uryutter.model.OAuthInfo;
 
 public class OAuthUtil {
 

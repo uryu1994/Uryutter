@@ -1,4 +1,4 @@
-package uryutter_maven.util;
+package uryutter.util;
 
 import java.util.List;
 

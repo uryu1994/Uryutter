@@ -4,15 +4,14 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.uryu1994</groupId>
-  <artifactId>uryutter_maven</artifactId>
+  <artifactId>uryutter</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>uryutter_maven</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <mainClass>org.uryu1994.uryutter_maven.application.Main</mainClass>
+    <mainClass>org.uryu1994.uryutter.application.Main</mainClass>
   </properties>
 
   <organization>
@@ -140,4 +139,5 @@
       <version>4.0.3-SNAPSHOT</version>
     </dependency>
   </dependencies>
+  <name>Uryutter</name>
 </project>
