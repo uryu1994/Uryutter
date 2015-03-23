@@ -47,8 +47,7 @@ public class StreamUtil extends UserStreamAdapter {
                 // メカヲタくんにふぁぼられたとき
                 if(source.getScreenName().equals("mecaota")) {
                     try {
-                        TwitterFactory.getSingleton()
-                        .updateStatus("メカヲタ君にふぁぼられたぞーーーーーwwwwwww");
+                        TwitterUtil.getTwitter().updateStatus("メカヲタ君にふぁぼられたぞーーーーーwwwwwww");
                     } catch (TwitterException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();

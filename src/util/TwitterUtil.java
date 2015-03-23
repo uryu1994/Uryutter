@@ -26,7 +26,7 @@ public class TwitterUtil {
     private static Image myIcon;
     
     Status status;
-    Twitter twitter;
+    private static Twitter twitter;
     private List<Status> list;
     private List<Status> mentionList;
 
@@ -92,6 +92,14 @@ public class TwitterUtil {
 
     public static Image getMyIcon() {
         return myIcon;
+    }
+
+    public static Twitter getTwitter() {
+        return twitter;
+    }
+
+    public static void setTwitter(Twitter twitter) {
+        TwitterUtil.twitter = twitter;
     }
 
 }
