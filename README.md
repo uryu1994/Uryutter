@@ -22,5 +22,5 @@ This Project is developed by uryu1994.
 普通に``プロジェクトを開く``で開けばMavenプロジェクトとして認識してくれます
 
 ## 注意事項
-* 現段階では[Twitter Developpers](https://dev.twitter.com/)からAPI取得して``twitter4j.properties``を生成しないと使えない状況です
+* OAuth認証に対応しました(2015/03/22)
 * 詳しくは[こちら](http://twitter4j.org/ja/)
