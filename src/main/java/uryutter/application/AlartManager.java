@@ -7,13 +7,10 @@ import java.util.List;
 import twitter4j.Status;
 import twitter4j.User;
 import uryutter.util.TwitterUtil;
-import javafx.application.Platform;
-import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 

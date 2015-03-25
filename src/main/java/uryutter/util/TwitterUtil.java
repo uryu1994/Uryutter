@@ -50,7 +50,6 @@ public class TwitterUtil {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
     }
 
     /**
