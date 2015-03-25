@@ -41,7 +41,7 @@
                               <Font size="9.0" />
                            </font>
                         </Button>
-                        <Button fx:id="favorite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="18.0" prefWidth="36.0" text="★Fav">
+                        <Button fx:id="favorite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onFavorite" prefHeight="18.0" prefWidth="36.0" text="★Fav">
                            <font>
                               <Font size="8.0" />
                            </font>
