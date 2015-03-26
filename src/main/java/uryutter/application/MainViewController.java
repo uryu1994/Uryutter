@@ -28,6 +28,8 @@ public class MainViewController implements Initializable {
 
     public static ObservableList<Status> homeTimeLine_O = FXCollections.observableArrayList();
     public static ObservableList<Status> mentionList_O = FXCollections.observableArrayList();
+    
+    private Long inReplyToStatusId;
 
     @FXML
     public TextArea newTweet;
@@ -54,8 +56,9 @@ public class MainViewController implements Initializable {
     protected void tweetAction(ActionEvent ev) {
         String tweetText = newTweet.getText();
         if(!tweetText.equals("")) {
-            twitterUtil.tweet(tweetText);
+            twitterUtil.tweet(tweetText, inReplyToStatusId);
             newTweet.setText("");
+            inReplyToStatusId = null;
         }
     }
 
@@ -106,6 +109,14 @@ public class MainViewController implements Initializable {
             }
         });
         mainViewController = this;
+    }
+
+    public long getInReplyToStatusId() {
+        return inReplyToStatusId;
+    }
+
+    public void setInReplyToStatusId(Long inReplyToStatusId) {
+        this.inReplyToStatusId = inReplyToStatusId;
     }
 
 }

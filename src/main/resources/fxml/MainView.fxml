@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -54,6 +55,9 @@
                <content>
                   <ListView fx:id="homeTimeLine" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="350.0" />
                </content>
+               <graphic>
+                  <SVGPath content="M4 0l-4 3h1v4h2v-2h2v2h2v-4.03l1 .03-4-3z" fill="#0582ff" scaleX="1.5" scaleY="1.5" scaleZ="1.5" stroke="#337aff" />
+               </graphic>
           </Tab>
           <Tab text="Mention">
                <content>

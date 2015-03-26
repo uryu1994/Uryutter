@@ -37,7 +37,7 @@ public class AlartManager {
             alartS.setResizable(false);
 
             alartP.getUserName().setText(status.getUser().getName());
-            alartP.getUserScreenName().setText(status.getUser().getScreenName());
+            alartP.getUserScreenName().setText("@"+status.getUser().getScreenName());
             alartP.getTweet().setText(status.getText());
             alartP.getUserImage().setImage(new Image(status.getUser().getBiggerProfileImageURL()));
             alartP.getPane().setStyle("-fx-background-color: lightseagreen;");
@@ -65,7 +65,7 @@ public class AlartManager {
             alartS.setResizable(false);
 
             alartP.getUserName().setText(favUser.getName());
-            alartP.getUserScreenName().setText(status.getUser().getScreenName());
+            alartP.getUserScreenName().setText("@"+status.getUser().getScreenName());
             alartP.getTweet().setText(status.getText());
             alartP.getUserImage().setImage(new Image(favUser.getBiggerProfileImageURL()));
             alartP.getPane().setStyle("-fx-background-color: yellow;");
@@ -93,7 +93,7 @@ public class AlartManager {
             alartS.setResizable(false);
 
             alartP.getUserName().setText(status.getUser().getName());
-            alartP.getUserScreenName().setText(status.getUser().getScreenName());
+            alartP.getUserScreenName().setText("@"+status.getUser().getScreenName());
             alartP.getTweet().setText(status.getText());
             alartP.getUserImage().setImage(new Image(status.getUser().getBiggerProfileImageURL()));
 

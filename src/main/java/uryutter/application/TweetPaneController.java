@@ -1,18 +1,30 @@
 package uryutter.application;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import twitter4j.Query;
 import twitter4j.Status;
 import twitter4j.TwitterException;
+import twitter4j.UserMentionEntity;
 import uryutter.util.TwitterUtil;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class TweetPaneController extends ListCell<Status> {
 
@@ -75,6 +87,38 @@ public class TweetPaneController extends ListCell<Status> {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
+        }
+    }
+
+    @FXML
+    public void createTweetFullPane(MouseEvent e) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FullTweetPane.fxml"));
+        try {
+            loader.load();
+            Parent root = loader.getRoot();
+            TweetFullPaneController tweetFullPane = loader.getController();
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().setAll("/styles/application.css");
+            Stage fullTweetStage = new Stage(StageStyle.DECORATED);
+
+            fullTweetStage.setScene(scene);
+            fullTweetStage.setResizable(false);
+
+            tweetFullPane.getUserName().setText(status.getUser().getName());
+            tweetFullPane.getUserId().setText("@"+status.getUser().getScreenName());
+            tweetFullPane.getTweetContent().setText(status.getText());
+            tweetFullPane.getUserIcon()
+            .setImage(new Image(status.getUser().getBiggerProfileImageURL()));
+            tweetFullPane.setStatus(status);
+            
+            tweetFullPane.setStage(fullTweetStage);
+
+            fullTweetStage.show();
+
+        } catch (IOException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
         }
     }
 

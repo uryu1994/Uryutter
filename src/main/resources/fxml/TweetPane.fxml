@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.paint.*?>
@@ -8,7 +10,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="theColumn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="theColumn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#createTweetFullPane" prefHeight="80.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="80.0" prefWidth="300.0">
          <children>
@@ -36,20 +38,38 @@
                   </Label>
                   <FlowPane alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="233.0">
                      <children>
-                        <Button fx:id="reply" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="18.0" prefWidth="36.0" text="Reply">
+                        <Button fx:id="reply" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="18.0" prefWidth="36.0" style="-fx-border-color: null; -fx-background-color: null;" text="Reply">
                            <font>
                               <Font size="9.0" />
                            </font>
+                           <graphic>
+                              <SVGPath content="M5 0v2c-4 0-5 2.05-5 5 .52-1.98 2-3 4-3h1v2l3-3.16-3-2.84z" fill="#c6c6c6" scaleX="1.5" scaleY="1.5" scaleZ="1.5" />
+                           </graphic>
+                           <FlowPane.margin>
+                              <Insets left="5.0" right="2.5" />
+                           </FlowPane.margin>
                         </Button>
-                        <Button fx:id="favorite" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onFavorite" prefHeight="18.0" prefWidth="36.0" text="★Fav">
+                        <Button fx:id="favorite" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onFavorite" prefHeight="18.0" prefWidth="36.0" style="-fx-border-color: null; -fx-background-color: null;" text="★Fav">
                            <font>
                               <Font size="8.0" />
                            </font>
+                           <graphic>
+                              <SVGPath content="M4 0l-1 3h-3l2.5 2-1 3 2.5-2 2.5 2-1-3 2.5-2h-3l-1-3z" fill="#c6c6c6" scaleX="1.5" scaleY="1.5" scaleZ="1.5" styleClass="favorite-button" />
+                           </graphic>
+                           <FlowPane.margin>
+                              <Insets left="2.5" right="2.5" />
+                           </FlowPane.margin>
                         </Button>
-                        <Button fx:id="retweet" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="18.0" prefWidth="36.0" text="RT">
+                        <Button fx:id="retweet" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="18.0" prefWidth="36.0" style="-fx-border-color: null; -fx-background-color: null;" text="RT" textFill="#1ca80a">
                            <font>
                               <Font size="8.0" />
                            </font>
+                           <graphic>
+                              <SVGPath content="M1 0v2h1v-1h4v2h-1l1.5 2.5 1.5-2.5h-1v-3h-6zm.5 2.5l-1.5 2.5h1v3h6v-2h-1v1h-4v-2h1l-1.5-2.5z" fill="#c6c6c6" scaleX="1.5" scaleY="1.5" scaleZ="1.5" styleClass="retweet-button" />
+                           </graphic>
+                           <FlowPane.margin>
+                              <Insets left="2.5" right="5.0" />
+                           </FlowPane.margin>
                         </Button>
                      </children>
                   </FlowPane>
