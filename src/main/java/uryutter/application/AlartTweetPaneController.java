@@ -7,6 +7,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * 通知用のパネルのコントローラ
+ * 
+ * @author prices_over
+ *
+ */
 public class AlartTweetPaneController extends Stage {
     
     private int num;

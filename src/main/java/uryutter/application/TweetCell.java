@@ -3,6 +3,12 @@ package uryutter.application;
 import twitter4j.Status;
 import javafx.scene.control.ListCell;
 
+/**
+ * タイムラインが更新されたときに呼び出されるクラス
+ * 
+ * @author prices_over
+ *
+ */
 public class TweetCell extends ListCell<Status> {
     
     @Override

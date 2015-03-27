@@ -20,15 +20,21 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
+/**
+ * メインウィンドウのコントローラ
+ * 
+ * @author prices_over
+ *
+ */
 public class MainViewController implements Initializable {
 
     public static MainViewController mainViewController;
 
     public TwitterUtil twitterUtil;
 
-    public static ObservableList<Status> homeTimeLine_O = FXCollections.observableArrayList();
-    public static ObservableList<Status> mentionList_O = FXCollections.observableArrayList();
-    
+    public ObservableList<Status> homeTimeLine_O = FXCollections.observableArrayList();
+    public ObservableList<Status> mentionList_O = FXCollections.observableArrayList();
+
     private Long inReplyToStatusId;
 
     @FXML
@@ -71,7 +77,7 @@ public class MainViewController implements Initializable {
         userIcon.setImage(TwitterUtil.getMyIcon());
 
         newTweet.textProperty().addListener(new InvalidationListener() {
-            
+
             // 入力検知(何も入ってなければツイートボタンを無効)
             @Override
             public void invalidated(Observable observable) {
@@ -109,6 +115,35 @@ public class MainViewController implements Initializable {
             }
         });
         mainViewController = this;
+    }
+
+    /**
+     * タイムラインを更新する
+     *
+     * synchronized 
+     * 主にリツイート/お気に入りのときに読み出し
+     * 
+     * @param newStatus 更新されたステータス
+     */
+    public void updateTimeLine(Status newStatus) {
+        synchronized(homeTimeLine_O) {
+            for(Status oldStatus : homeTimeLine_O) {
+                int num = homeTimeLine_O.indexOf(oldStatus);
+                if(newStatus.isRetweeted()) {
+                    if(oldStatus.getId() == newStatus.getRetweetedStatus().getId()) {
+                        homeTimeLine_O.remove(num);
+                        homeTimeLine_O.add(num, newStatus);
+                        return ;
+                    }
+                } else {
+                    if(oldStatus.getId() == newStatus.getId()) {
+                        homeTimeLine_O.remove(num);
+                        homeTimeLine_O.add(num, newStatus);
+                        return ;
+                    }
+                }
+            }
+        }
     }
 
     public long getInReplyToStatusId() {

@@ -3,6 +3,8 @@ package uryutter.model;
 import java.io.Serializable;
 
 /**
+ * 認証情報を格納するクラス
+ * 
  * @author prices_over
  *
  */

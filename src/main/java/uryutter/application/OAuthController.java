@@ -14,6 +14,12 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * OAuth認証を行うためのビュー制御を行うクラス
+ * 
+ * @author prices_over
+ *
+ */
 public class OAuthController {
 
     private String pincode;

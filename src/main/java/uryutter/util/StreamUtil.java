@@ -8,6 +8,12 @@ import twitter4j.TwitterException;
 import twitter4j.User;
 import twitter4j.UserStreamAdapter;
 
+/**
+ * ツイッターストリーム関係のUtilクラス
+ * 
+ * @author prices_over
+ *
+ */
 public class StreamUtil extends UserStreamAdapter {
 
     public void onStatus(Status status) {
@@ -16,12 +22,12 @@ public class StreamUtil extends UserStreamAdapter {
             @Override
             public void run() {
                 // TODO Auto-generated method stub
-                MainViewController.homeTimeLine_O.add(0, status);
+                MainViewController.mainViewController.homeTimeLine_O.add(0, status);
                 // メンション通知
                 if(TwitterUtil.getMyId().equals(status.getInReplyToScreenName())) {
-                    MainViewController.mentionList_O.add(0, status);
+                    MainViewController.mainViewController.mentionList_O.add(0, status);
                     Platform.runLater(() -> {
-                        AlartManager.getInstance().createAlart(status);
+                        AlartManager.getInstance().createMentionAlart(status);
                     });
                 }
                 // リツイート通知

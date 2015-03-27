@@ -19,6 +19,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import uryutter.model.OAuthInfo;
 
+/**
+ * OAuth認証用のUtilクラス
+ * 
+ * @author prices_over
+ *
+ */
 public class OAuthUtil {
 
     private static OAuthUtil instance;
@@ -27,9 +33,18 @@ public class OAuthUtil {
     private static RequestToken requestToken;
     private static AccessToken accessToken;
 
+    /**
+     * 生成されているキーを読み込みます
+     * (無ければOAuth認証するWebViewを表示し、キーを生成します)
+     * 
+     * @param primaryStage
+     * @throws Exception
+     */
     public void readOAuthInfo(Stage primaryStage) throws Exception {
         oAuthInfo = new OAuthInfo();
         File file = new File(".key.dat");
+        
+        /* --キーがなければ生成し、あれば読み込んでアクセストークンを生成し、OAuth認証を行います-- */
         if(!file.exists()) {
             createAccessToken();
         } else {
@@ -55,6 +70,9 @@ public class OAuthUtil {
         }
     }
 
+    /**
+     * アクセストークンを生成します
+     */
     public void createAccessToken() {
         try {
             TwitterFactory.getSingleton().setOAuthConsumer(oAuthInfo.getConsumer(), oAuthInfo.getConsumer_Secret());
@@ -84,6 +102,11 @@ public class OAuthUtil {
         stage.show();
     }
 
+    /**
+     * 生成したOAuth認証情報をオブジェクトごと保存します
+     * 
+     * @throws Exception
+     */
     public static void writeOAuthInfo() throws Exception {
         FileOutputStream fout = new FileOutputStream(".key.dat");
         ObjectOutputStream oout = new ObjectOutputStream(fout);

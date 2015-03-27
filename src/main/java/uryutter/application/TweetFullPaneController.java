@@ -11,6 +11,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * ツイートの詳細ウィンドウを制御するクラス
+ * 
+ * @author prices_over
+ *
+ */
 public class TweetFullPaneController extends Stage {
 
     private Stage stage;

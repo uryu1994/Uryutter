@@ -5,6 +5,12 @@ import uryutter.util.TwitterUtil;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/**
+ * Uryutterのメインクラス
+ * 
+ * @author prices_over
+ *
+ */
 public class Main extends Application {
 
     @Override

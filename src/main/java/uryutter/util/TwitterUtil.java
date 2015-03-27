@@ -15,6 +15,8 @@ import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 
 /**
+ * Twitterへの認証やツイートなどのUtilクラス
+ * 
  * @author prices_over
  *
  */
