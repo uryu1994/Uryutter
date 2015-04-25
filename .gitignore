@@ -15,6 +15,7 @@ tmp/
 *.tmp
 *.bak
 *.swp
+*.DS_Store
 *~.nib
 local.properties
 .settings/

@@ -49,7 +49,6 @@ public class TwitterUtil {
             myId = twitter.verifyCredentials().getScreenName();
             myIcon = new Image(twitter.verifyCredentials().getBiggerProfileImageURL());
         } catch (IllegalStateException | TwitterException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -57,6 +56,7 @@ public class TwitterUtil {
     /**
      * ツイート処理をする
      * @param t ツイート内容がかかれたツイート
+     * @param inReplyToStatusId
      */
     public void tweet(String t, Long inReplyToStatusId) {
         try {
@@ -66,7 +66,6 @@ public class TwitterUtil {
             }
             twitter.updateStatus(status);
         } catch (TwitterException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

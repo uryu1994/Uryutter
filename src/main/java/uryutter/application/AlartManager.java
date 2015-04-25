@@ -173,6 +173,4 @@ public class AlartManager {
         AlartManager.alarts = alarts;
     }
 
-
-
 }

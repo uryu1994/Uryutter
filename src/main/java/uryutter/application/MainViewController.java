@@ -58,6 +58,11 @@ public class MainViewController implements Initializable {
     @FXML
     public ListView<Status> mentionList;
 
+    /**
+     * ツイートボタンが押された時のアクション
+     * 
+     * @param ev
+     */
     @FXML
     protected void tweetAction(ActionEvent ev) {
         String tweetText = newTweet.getText();
@@ -81,7 +86,6 @@ public class MainViewController implements Initializable {
             // 入力検知(何も入ってなければツイートボタンを無効)
             @Override
             public void invalidated(Observable observable) {
-                // TODO Auto-generated method stub
                 if(!newTweet.getText().equals("")) {
                     tweetButton.setDisable(false);
                 } else {
@@ -98,7 +102,6 @@ public class MainViewController implements Initializable {
         .setCellFactory(new Callback<ListView<Status>, ListCell<Status>>() {
             @Override
             public ListCell<Status> call(ListView<Status> param) {
-                // TODO Auto-generated method stub
                 return new TweetCell();
             }
         });
@@ -110,7 +113,6 @@ public class MainViewController implements Initializable {
 
             @Override
             public ListCell<Status> call(ListView<Status> param) {
-                // TODO Auto-generated method stub
                 return new TweetCell();
             }
         });

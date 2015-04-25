@@ -44,7 +44,7 @@ public class OAuthUtil {
         oAuthInfo = new OAuthInfo();
         File file = new File(".key.dat");
         
-        /* --キーがなければ生成し、あれば読み込んでアクセストークンを生成し、OAuth認証を行います-- */
+        //-- キーがなければ生成し、あれば読み込んでアクセストークンを生成し、OAuth認証を行います --//
         if(!file.exists()) {
             createAccessToken();
         } else {
@@ -54,7 +54,8 @@ public class OAuthUtil {
             in.close();
             fis.close();
             accessToken = new AccessToken(oAuthInfo.getAccessToken(), oAuthInfo.getAccessToken_Secret());
-
+            
+            //-- ホーム画面の生成 --//
             try {
                 Parent root = FXMLLoader.load(getClass().getResource(
                         "/fxml/MainView.fxml"));
@@ -78,17 +79,17 @@ public class OAuthUtil {
             TwitterFactory.getSingleton().setOAuthConsumer(oAuthInfo.getConsumer(), oAuthInfo.getConsumer_Secret());
             requestToken = TwitterFactory.getSingleton().getOAuthRequestToken();
         } catch (TwitterException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/OAuth.fxml"));
+        
         try {
             loader.load();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
         OAuthController oAuthController = loader.getController();
         Parent root = loader.getRoot();
         oAuthController.setUrl(requestToken.getAuthenticationURL());

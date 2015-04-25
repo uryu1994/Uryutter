@@ -21,7 +21,6 @@ public class StreamUtil extends UserStreamAdapter {
 
             @Override
             public void run() {
-                // TODO Auto-generated method stub
                 MainViewController.mainViewController.homeTimeLine_O.add(0, status);
                 // メンション通知
                 if(TwitterUtil.getMyId().equals(status.getInReplyToScreenName())) {

@@ -67,7 +67,6 @@ public class TweetPaneController extends ListCell<Status> {
         try {
             loader.load();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -96,7 +95,6 @@ public class TweetPaneController extends ListCell<Status> {
                         TwitterUtil.getTwitter().destroyFavorite(status.getId()));
             }
         } catch (TwitterException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -120,20 +118,12 @@ public class TweetPaneController extends ListCell<Status> {
 
             fullTweetStage.setScene(scene);
             fullTweetStage.setResizable(false);
-
-            tweetFullPane.getUserName().setText(status.getUser().getName());
-            tweetFullPane.getUserId().setText("@"+status.getUser().getScreenName());
-            tweetFullPane.getTweetContent().setText(status.getText());
-            tweetFullPane.getUserIcon()
-            .setImage(new Image(status.getUser().getBiggerProfileImageURL()));
-            tweetFullPane.setStatus(status);
-
+            tweetFullPane.setItems(status);
             tweetFullPane.setStage(fullTweetStage);
 
             fullTweetStage.show();
 
         } catch (IOException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
     }

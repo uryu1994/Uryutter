@@ -51,9 +51,9 @@
                <FlowPane.margin>
                   <Insets left="10.0" right="5.0" />
                </FlowPane.margin></Button>
-            <Button fx:id="favorite" contentDisplay="GRAPHIC_ONLY" graphicTextGap="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="37.0" style="-fx-background-color: null; -fx-border-color: null;">
+            <Button fx:id="favorite" contentDisplay="GRAPHIC_ONLY" graphicTextGap="1.0" mnemonicParsing="false" onAction="#pushFavorite" prefHeight="26.0" prefWidth="37.0" style="-fx-background-color: null; -fx-border-color: null;">
                <graphic>
-                  <SVGPath content="M4 0l-1 3h-3l2.5 2-1 3 2.5-2 2.5 2-1-3 2.5-2h-3l-1-3z" fill="#c6c6c6" scaleX="2.5" scaleY="2.5" scaleZ="2.5" styleClass="favorite-button" />
+                  <SVGPath fx:id="favSvg" content="M4 0l-1 3h-3l2.5 2-1 3 2.5-2 2.5 2-1-3 2.5-2h-3l-1-3z" fill="#c6c6c6" scaleX="2.5" scaleY="2.5" scaleZ="2.5" styleClass="favorite-button" />
                </graphic>
                <FlowPane.margin>
                   <Insets left="5.0" right="5.0" />
@@ -61,7 +61,7 @@
             </Button>
             <Button fx:id="retweet" contentDisplay="GRAPHIC_ONLY" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="36.0" style="-fx-border-color: null; -fx-background-color: null;" textFill="#077533">
                <graphic>
-                  <SVGPath content="M1 0v2h1v-1h4v2h-1l1.5 2.5 1.5-2.5h-1v-3h-6zm.5 2.5l-1.5 2.5h1v3h6v-2h-1v1h-4v-2h1l-1.5-2.5z" fill="#c6c6c6" scaleX="2.5" scaleY="2.5" scaleZ="2.5" styleClass="retweet-button" />
+                  <SVGPath fx:id="rtSvg" content="M1 0v2h1v-1h4v2h-1l1.5 2.5 1.5-2.5h-1v-3h-6zm.5 2.5l-1.5 2.5h1v3h6v-2h-1v1h-4v-2h1l-1.5-2.5z" fill="#c6c6c6" scaleX="2.5" scaleY="2.5" scaleZ="2.5" styleClass="retweet-button" />
                </graphic>
                <FlowPane.margin>
                   <Insets left="5.0" right="5.0" />

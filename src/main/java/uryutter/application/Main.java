@@ -15,12 +15,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
+        
+        // --OAuth認証-- //
         try {
             OAuthUtil oAuthUtil = new OAuthUtil();
             oAuthUtil.readOAuthInfo(primaryStage);
         } catch (Exception e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
     }
