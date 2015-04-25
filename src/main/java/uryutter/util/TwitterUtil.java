@@ -4,6 +4,7 @@ import java.util.List;
 
 import javafx.scene.image.Image;
 import twitter4j.Status;
+import twitter4j.StatusUpdate;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -14,6 +15,8 @@ import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 
 /**
+ * Twitterへの認証やツイートなどのUtilクラス
+ * 
  * @author prices_over
  *
  */
@@ -25,7 +28,6 @@ public class TwitterUtil {
     private static String myId;
     private static Image myIcon;
     
-    Status status;
     private static Twitter twitter;
     private List<Status> list;
     private List<Status> mentionList;
@@ -47,7 +49,6 @@ public class TwitterUtil {
             myId = twitter.verifyCredentials().getScreenName();
             myIcon = new Image(twitter.verifyCredentials().getBiggerProfileImageURL());
         } catch (IllegalStateException | TwitterException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -55,12 +56,16 @@ public class TwitterUtil {
     /**
      * ツイート処理をする
      * @param t ツイート内容がかかれたツイート
+     * @param inReplyToStatusId
      */
-    public void tweet(String t) {
+    public void tweet(String t, Long inReplyToStatusId) {
         try {
-            status = twitter.updateStatus(t);
+            StatusUpdate status = new StatusUpdate(t);
+            if(inReplyToStatusId != null) {
+                status.setInReplyToStatusId(inReplyToStatusId);
+            }
+            twitter.updateStatus(status);
         } catch (TwitterException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

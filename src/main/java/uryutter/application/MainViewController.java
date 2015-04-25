@@ -20,14 +20,22 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
+/**
+ * メインウィンドウのコントローラ
+ * 
+ * @author prices_over
+ *
+ */
 public class MainViewController implements Initializable {
 
     public static MainViewController mainViewController;
 
     public TwitterUtil twitterUtil;
 
-    public static ObservableList<Status> homeTimeLine_O = FXCollections.observableArrayList();
-    public static ObservableList<Status> mentionList_O = FXCollections.observableArrayList();
+    public ObservableList<Status> homeTimeLine_O = FXCollections.observableArrayList();
+    public ObservableList<Status> mentionList_O = FXCollections.observableArrayList();
+
+    private Long inReplyToStatusId;
 
     @FXML
     public TextArea newTweet;
@@ -50,12 +58,18 @@ public class MainViewController implements Initializable {
     @FXML
     public ListView<Status> mentionList;
 
+    /**
+     * ツイートボタンが押された時のアクション
+     * 
+     * @param ev
+     */
     @FXML
     protected void tweetAction(ActionEvent ev) {
         String tweetText = newTweet.getText();
         if(!tweetText.equals("")) {
-            twitterUtil.tweet(tweetText);
+            twitterUtil.tweet(tweetText, inReplyToStatusId);
             newTweet.setText("");
+            inReplyToStatusId = null;
         }
     }
 
@@ -68,11 +82,10 @@ public class MainViewController implements Initializable {
         userIcon.setImage(TwitterUtil.getMyIcon());
 
         newTweet.textProperty().addListener(new InvalidationListener() {
-            
+
             // 入力検知(何も入ってなければツイートボタンを無効)
             @Override
             public void invalidated(Observable observable) {
-                // TODO Auto-generated method stub
                 if(!newTweet.getText().equals("")) {
                     tweetButton.setDisable(false);
                 } else {
@@ -89,7 +102,6 @@ public class MainViewController implements Initializable {
         .setCellFactory(new Callback<ListView<Status>, ListCell<Status>>() {
             @Override
             public ListCell<Status> call(ListView<Status> param) {
-                // TODO Auto-generated method stub
                 return new TweetCell();
             }
         });
@@ -101,11 +113,47 @@ public class MainViewController implements Initializable {
 
             @Override
             public ListCell<Status> call(ListView<Status> param) {
-                // TODO Auto-generated method stub
                 return new TweetCell();
             }
         });
         mainViewController = this;
+    }
+
+    /**
+     * タイムラインを更新する
+     *
+     * synchronized 
+     * 主にリツイート/お気に入りのときに読み出し
+     * 
+     * @param newStatus 更新されたステータス
+     */
+    public void updateTimeLine(Status newStatus) {
+        synchronized(homeTimeLine_O) {
+            for(Status oldStatus : homeTimeLine_O) {
+                int num = homeTimeLine_O.indexOf(oldStatus);
+                if(newStatus.isRetweeted()) {
+                    if(oldStatus.getId() == newStatus.getRetweetedStatus().getId()) {
+                        homeTimeLine_O.remove(num);
+                        homeTimeLine_O.add(num, newStatus);
+                        return ;
+                    }
+                } else {
+                    if(oldStatus.getId() == newStatus.getId()) {
+                        homeTimeLine_O.remove(num);
+                        homeTimeLine_O.add(num, newStatus);
+                        return ;
+                    }
+                }
+            }
+        }
+    }
+
+    public long getInReplyToStatusId() {
+        return inReplyToStatusId;
+    }
+
+    public void setInReplyToStatusId(Long inReplyToStatusId) {
+        this.inReplyToStatusId = inReplyToStatusId;
     }
 
 }

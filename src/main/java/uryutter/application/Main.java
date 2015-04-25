@@ -5,16 +5,22 @@ import uryutter.util.TwitterUtil;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/**
+ * Uryutterのメインクラス
+ * 
+ * @author prices_over
+ *
+ */
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-
+        
+        // --OAuth認証-- //
         try {
             OAuthUtil oAuthUtil = new OAuthUtil();
             oAuthUtil.readOAuthInfo(primaryStage);
         } catch (Exception e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
     }

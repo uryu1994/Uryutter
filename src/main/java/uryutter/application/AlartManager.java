@@ -6,7 +6,6 @@ import java.util.List;
 
 import twitter4j.Status;
 import twitter4j.User;
-import uryutter.util.TwitterUtil;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,6 +13,12 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * 通知のパネルを管理するクラス
+ * 
+ * @author prices_over
+ *
+ */
 public class AlartManager {
 
     private static AlartManager instance;
@@ -22,7 +27,12 @@ public class AlartManager {
     private AlartManager() {
         alarts = new ArrayList<AlartTweetPaneController>();
     }
-    
+
+    /**
+     * リツイート通知用のパネルを生成します
+     * 
+     * @param status リツイートされたツイートのステータス
+     */
     public void createRTAlart(Status status) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AlartTweetPane.fxml"));
         try {
@@ -37,7 +47,7 @@ public class AlartManager {
             alartS.setResizable(false);
 
             alartP.getUserName().setText(status.getUser().getName());
-            alartP.getUserScreenName().setText(status.getUser().getScreenName());
+            alartP.getUserScreenName().setText("@"+status.getUser().getScreenName());
             alartP.getTweet().setText(status.getText());
             alartP.getUserImage().setImage(new Image(status.getUser().getBiggerProfileImageURL()));
             alartP.getPane().setStyle("-fx-background-color: lightseagreen;");
@@ -50,7 +60,13 @@ public class AlartManager {
             e.printStackTrace();
         }
     }
-    
+
+    /**
+     * お気に入り通知のパネルを生成します
+     * 
+     * @param status お気に入り登録されたツイートのステータス
+     * @param favUser お気に入り登録したユーザ
+     */
     public void createFavAlart(Status status, User favUser) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AlartTweetPane.fxml"));
         try {
@@ -65,7 +81,7 @@ public class AlartManager {
             alartS.setResizable(false);
 
             alartP.getUserName().setText(favUser.getName());
-            alartP.getUserScreenName().setText(status.getUser().getScreenName());
+            alartP.getUserScreenName().setText("@"+status.getUser().getScreenName());
             alartP.getTweet().setText(status.getText());
             alartP.getUserImage().setImage(new Image(favUser.getBiggerProfileImageURL()));
             alartP.getPane().setStyle("-fx-background-color: yellow;");
@@ -79,7 +95,12 @@ public class AlartManager {
         }
     }
 
-    public void createAlart(Status status) {
+    /**
+     * メンション通知のパネルを生成します
+     * 
+     * @param status メンションツイートのステータス
+     */
+    public void createMentionAlart(Status status) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AlartTweetPane.fxml"));
         try {
             loader.load();
@@ -93,14 +114,11 @@ public class AlartManager {
             alartS.setResizable(false);
 
             alartP.getUserName().setText(status.getUser().getName());
-            alartP.getUserScreenName().setText(status.getUser().getScreenName());
+            alartP.getUserScreenName().setText("@"+status.getUser().getScreenName());
             alartP.getTweet().setText(status.getText());
             alartP.getUserImage().setImage(new Image(status.getUser().getBiggerProfileImageURL()));
 
-            // Mentionのときだけ色変更
-            if(status.getInReplyToScreenName().equals(TwitterUtil.getMyId())) {
-                alartP.getPane().setStyle("-fx-background-color: skyblue;");
-            }
+            alartP.getPane().setStyle("-fx-background-color: skyblue;");
 
             alartP.setNum(alarts.size());
             alartP.setStage(alartS);
@@ -154,7 +172,5 @@ public class AlartManager {
     public static void setAlarts(List<AlartTweetPaneController> alarts) {
         AlartManager.alarts = alarts;
     }
-
-
 
 }

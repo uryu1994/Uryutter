@@ -6,6 +6,8 @@ import twitter4j.TwitterException;
 import uryutter.util.TwitterUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -13,7 +15,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.SVGPath;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+/**
+ * タイムラインのパネルを一つずつ制御するクラス
+ * 
+ * @author prices_over
+ *
+ */
 public class TweetPaneController extends ListCell<Status> {
 
     @FXML
@@ -38,7 +50,13 @@ public class TweetPaneController extends ListCell<Status> {
     private Button favorite;
 
     @FXML
+    private SVGPath favSvg;
+
+    @FXML
     private Button retweet;
+
+    @FXML
+    private SVGPath rtSvg;
 
     private Status status;
 
@@ -46,11 +64,9 @@ public class TweetPaneController extends ListCell<Status> {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TweetPane.fxml"));
         loader.setController(this);
-
         try {
             loader.load();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -59,22 +75,70 @@ public class TweetPaneController extends ListCell<Status> {
         userId.setText("@"+status.getUser().getScreenName());
         tweetContent.setText(status.getText());
         userIcon.setImage(new Image(status.getUser().getBiggerProfileImageURL()));
+        setFavoriteMark(status);
+
         setGraphic(getTheColumn());
     }
 
+    /**
+     * お気に入りを登録/解除します
+     * 
+     * @param ev マウスイベント
+     */
     public void onFavorite(MouseEvent ev) {
         try {
-            status = TwitterUtil.getTwitter().createFavorite(status.getId());
-            System.out.println("favorited");
-        } catch (TwitterException e) {
-            // TODO Auto-generated catch block
-            try {
-                status = TwitterUtil.getTwitter().destroyFavorite(status.getId());
-                System.out.println("Unfavorited");
-            } catch (TwitterException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
+            if(!status.isFavorited()) {
+                MainViewController.mainViewController.updateTimeLine(
+                        TwitterUtil.getTwitter().createFavorite(status.getId()));
+            } else {
+                MainViewController.mainViewController.updateTimeLine(
+                        TwitterUtil.getTwitter().destroyFavorite(status.getId()));
             }
+        } catch (TwitterException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * ツイートの詳細ページを生成します
+     * 
+     * @param e マウスイベント
+     */
+    @FXML
+    public void createTweetFullPane(MouseEvent e) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FullTweetPane.fxml"));
+        try {
+            loader.load();
+            Parent root = loader.getRoot();
+            TweetFullPaneController tweetFullPane = loader.getController();
+
+            Scene scene = new Scene(root);
+            scene.getStylesheets().setAll("/styles/application.css");
+            Stage fullTweetStage = new Stage(StageStyle.DECORATED);
+
+            fullTweetStage.setScene(scene);
+            fullTweetStage.setResizable(false);
+            tweetFullPane.setItems(status);
+            tweetFullPane.setStage(fullTweetStage);
+
+            fullTweetStage.show();
+
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+    /**
+     * お気に入りに登録してるならアイコンを黄色マーク、
+     * していないならアイコンを灰色のままにします
+     * 
+     * @param status 確認するステータス
+     */
+    private void setFavoriteMark(Status status) {
+        if(status.isFavorited()) {
+            favSvg.setFill(Paint.valueOf("yellow"));
+        } else {
+            favSvg.setFill(Paint.valueOf("c6c6c6"));
         }
     }
 
