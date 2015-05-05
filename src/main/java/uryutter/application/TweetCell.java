@@ -11,6 +11,12 @@ import javafx.scene.control.ListCell;
  */
 public class TweetCell extends ListCell<Status> {
     
+    /**
+     * タイムラインが更新された時に行を追加します
+     * 
+     * @param status ステータス
+     * @param empty ステータスが空かを判定
+     */
     @Override
     public void updateItem(Status status, boolean empty) {
         super.updateItem(status, empty);

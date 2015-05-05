@@ -32,6 +32,9 @@ public class TwitterUtil {
     private List<Status> list;
     private List<Status> mentionList;
 
+    /**
+     * TwitterUtilのコンストラクタ
+     */
     public TwitterUtil() {
 
         try {            
@@ -55,6 +58,7 @@ public class TwitterUtil {
 
     /**
      * ツイート処理をする
+     * 
      * @param t ツイート内容がかかれたツイート
      * @param inReplyToStatusId
      */

@@ -131,6 +131,9 @@ public class AlartManager {
         }
     }
 
+    /**
+     * アラートを受信した順番に表示します
+     */
     public void showAlarts() {
         for(int i=0;i<alarts.size();i++) {
             Stage stage = alarts.get(i).getStage();
@@ -141,6 +144,11 @@ public class AlartManager {
         }
     }
 
+    /**
+     * アラートパネルを消します
+     * 
+     * @param num 消すパネルの番号(最新順)
+     */
     public void hideAlart(int num) {
         alarts.get(num).getStage().hide();
         alarts.remove(num);
@@ -148,12 +156,21 @@ public class AlartManager {
         showAlarts();
     }
 
+    /**
+     * アラートパネルを消すごとに番号を振り直します
+     * 
+     * @param num 閉じられたパネルの番号
+     */
     private void reNumbering(int num) {
         for(int i=num; i<alarts.size(); i++) {
             alarts.get(i).setNum(i);
         }
     }
 
+    /**
+     * Instanceのgetter
+     * @return インスタンスを返します
+     */
     public static AlartManager getInstance() {
         if(instance == null) {
             instance = new AlartManager();

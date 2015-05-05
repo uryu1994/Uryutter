@@ -73,6 +73,12 @@ public class MainViewController implements Initializable {
         }
     }
 
+    /**
+     * MainViewの初期化メソッド
+     * 
+     * @param location
+     * @param resources 
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         twitterUtil = new TwitterUtil();

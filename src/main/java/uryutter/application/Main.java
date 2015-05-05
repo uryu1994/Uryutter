@@ -25,6 +25,7 @@ public class Main extends Application {
         }
     }
 
+    @Override
     public void stop() {
         TwitterUtil.twitterStream.shutdown();
     }

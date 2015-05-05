@@ -30,7 +30,12 @@ public class OAuthController {
 
     @FXML
     private WebView webview;
-
+    
+    /**
+     * 入力されたPINコードを元にAccessTokenを生成し、Main画面を表示します
+     * 
+     * @param ev 
+     */
     @FXML
     protected void pinAuth(ActionEvent ev) {
         pincode = pin.getText();
