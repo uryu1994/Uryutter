@@ -59,12 +59,20 @@ public class TweetFullPaneController extends Stage {
 
     private Status status;
 
+    /**
+     * リプライボタンが押された時の動作
+     * @param ev
+     */
     @FXML
     protected void pushReply(ActionEvent ev) {
         MainViewController.mainViewController.newTweet.setText(userId.getText()+" ");
         MainViewController.mainViewController.setInReplyToStatusId(status.getId());
     }
 
+    /**
+     * favoriteボタンが押された時の動作
+     * @param ev
+     */
     @FXML
     public void pushFavorite(ActionEvent ev) {
         try {
@@ -79,7 +87,7 @@ public class TweetFullPaneController extends Stage {
         }
         
         /* --お気に入り登録したツイートのタイムラインを更新します-- */
-        setItems(status);
+        setFavoriteMark(status);
         MainViewController.mainViewController.updateTimeLine(status);
     }
 
@@ -97,6 +105,10 @@ public class TweetFullPaneController extends Stage {
         setFavoriteMark(status);
     }
 
+    /**
+     * お気に入りが登録されていれば色を塗り、されてなければ色を消します
+     * @param status ツイート
+     */
     public void setFavoriteMark(Status status) {
         if(status.isFavorited()) {
             favSvg.setFill(Paint.valueOf("yellow"));

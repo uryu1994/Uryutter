@@ -33,6 +33,11 @@ public class AlartTweetPaneController extends Stage {
     @FXML
     private Label tweet;
     
+    /**
+     * パネルをクリックすると通知を消す
+     * 
+     * @param e 
+     */
     @FXML
     protected void closePane(MouseEvent e) {
         AlartManager.getInstance().hideAlart(num);

@@ -60,6 +60,11 @@ public class TweetPaneController extends ListCell<Status> {
 
     private Status status;
 
+    /**
+     * タイムラインのパネルを制御するクラスのコンストラクタ
+     * 
+     * @param status 受信したステータス
+     */
     public TweetPaneController(Status status) {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TweetPane.fxml"));
