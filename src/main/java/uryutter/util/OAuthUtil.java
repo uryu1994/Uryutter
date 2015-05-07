@@ -32,6 +32,9 @@ public class OAuthUtil {
     private static OAuthInfo oAuthInfo;
     private static RequestToken requestToken;
     private static AccessToken accessToken;
+    
+    private static Stage oAuthStage;
+    private static Scene oAuthScene;
 
     /**
      * 生成されているキーを読み込みます
@@ -95,12 +98,12 @@ public class OAuthUtil {
         oAuthController.setUrl(requestToken.getAuthenticationURL());
         loader.setController(oAuthController);
 
-        Scene scene = new Scene(root);
-        Stage stage = new Stage(StageStyle.DECORATED);
-        stage.setScene(scene);
-        stage.setResizable(false);
+        oAuthScene = new Scene(root);
+        oAuthStage = new Stage(StageStyle.DECORATED);
+        oAuthStage.setScene(oAuthScene);
+        oAuthStage.setResizable(false);
 
-        stage.show();
+        oAuthStage.show();
     }
 
     /**
@@ -149,4 +152,12 @@ public class OAuthUtil {
         OAuthUtil.requestToken = requestToken;
     }
 
+    public static Stage getoAuthStage() {
+        return oAuthStage;
+    }
+
+    public static Scene getoAuthScene() {
+        return oAuthScene;
+    }
+    
 }
