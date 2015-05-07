@@ -61,6 +61,9 @@ public class OAuthController {
                     primaryStage.setScene(scene);
                     primaryStage.setTitle("Uryutter");
                     primaryStage.show();
+                    
+                    /*OAuth認証ウィンドウを閉じる */
+                    OAuthUtil.getoAuthStage().close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

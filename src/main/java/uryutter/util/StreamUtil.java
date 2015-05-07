@@ -50,14 +50,6 @@ public class StreamUtil extends UserStreamAdapter {
                 @Override
                 public void run() {
                     AlartManager.getInstance().createFavAlart(favoritedStatus, source);
-                    // メカヲタくんにふぁぼられたとき
-                    if (source.getScreenName().equals("mecaota")) {
-                        try {
-                            TwitterUtil.getTwitter().updateStatus("メカヲタ君にふぁぼられたぞーーーーーwwwwwww");
-                        }
-                        catch (TwitterException e) {
-                        }
-                    }
                 }
             });
         }
