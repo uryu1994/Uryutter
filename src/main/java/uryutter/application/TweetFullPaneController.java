@@ -87,7 +87,7 @@ public class TweetFullPaneController extends Stage {
         }
         
         /* --お気に入り登録したツイートのタイムラインを更新します-- */
-        setFavoriteMark(status);
+        setItems(status);
         MainViewController.mainViewController.updateTimeLine(status);
     }
 

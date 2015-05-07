@@ -38,7 +38,7 @@
                   </Label>
                   <FlowPane alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="233.0">
                      <children>
-                        <Button fx:id="reply" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="18.0" prefWidth="36.0" style="-fx-border-color: null; -fx-background-color: null;" text="Reply">
+                        <Button fx:id="reply" contentDisplay="GRAPHIC_ONLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onReply" prefHeight="18.0" prefWidth="36.0" style="-fx-border-color: null; -fx-background-color: null;" text="Reply">
                            <font>
                               <Font size="9.0" />
                            </font>
