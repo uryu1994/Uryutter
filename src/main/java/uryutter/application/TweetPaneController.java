@@ -84,12 +84,24 @@ public class TweetPaneController extends ListCell<Status> {
 
         setGraphic(getTheColumn());
     }
+    
+    /**
+     * リプライボタンを押したときの動作
+     * 
+     * @param ev
+     */
+    @FXML
+    protected void onReply(MouseEvent ev) {
+        MainViewController.mainViewController.newTweet.setText(userId.getText()+" ");
+        MainViewController.mainViewController.setInReplyToStatusId(status.getId());
+    }
 
     /**
      * お気に入りを登録/解除します
      * 
      * @param ev マウスイベント
      */
+    @FXML
     public void onFavorite(MouseEvent ev) {
         try {
             if(!status.isFavorited()) {
@@ -118,7 +130,7 @@ public class TweetPaneController extends ListCell<Status> {
             TweetFullPaneController tweetFullPane = loader.getController();
 
             Scene scene = new Scene(root);
-            scene.getStylesheets().setAll("/styles/application.css");
+            //scene.getStylesheets().setAll("/styles/application.css");
             Stage fullTweetStage = new Stage(StageStyle.DECORATED);
 
             fullTweetStage.setScene(scene);
