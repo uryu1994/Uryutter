@@ -29,6 +29,11 @@
                               <Font name="System Italic" size="9.0" />
                            </font>
                         </Label>
+                        <Label fx:id="tweetTime" text="TweetTime" textAlignment="RIGHT">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Label>
                      </children>
                   </FlowPane>
                   <Label fx:id="tweetContent" alignment="TOP_LEFT" contentDisplay="RIGHT" prefHeight="42.0" prefWidth="233.0" text="Tweets" textOverrun="CLIP" wrapText="true">

@@ -16,6 +16,8 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
+import static uryutter.util.DateUtil.getTweetDate;
+
 /**
  * ツイートの詳細ウィンドウを制御するクラス
  * 
@@ -48,6 +50,9 @@ public class TweetFullPaneController extends Stage {
     @FXML
     private Label userId;
 
+    @FXML
+    private Label tweetTime;
+    
     @FXML
     private ImageView userIcon;
 
@@ -98,6 +103,7 @@ public class TweetFullPaneController extends Stage {
     public void setItems(Status status) {
         userName.setText(status.getUser().getName());
         userId.setText("@"+status.getUser().getScreenName());
+        tweetTime.setText(getTweetDate(status));
         tweetContent.setText(status.getText());
         userIcon.setImage(new Image(status.getUser().getBiggerProfileImageURL()));
         setStatus(status);
