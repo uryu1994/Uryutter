@@ -20,6 +20,8 @@ import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import static uryutter.util.DateUtil.getTweetDate;
+
 /**
  * タイムラインのパネルを一つずつ制御するクラス
  * 
@@ -36,6 +38,9 @@ public class TweetPaneController extends ListCell<Status> {
 
     @FXML
     private Label userId;
+    
+    @FXML
+    private Label tweetTime;
 
     @FXML
     private ImageView userIcon;
@@ -78,6 +83,7 @@ public class TweetPaneController extends ListCell<Status> {
         this.status = status;
         userName.setText(status.getUser().getName());
         userId.setText("@"+status.getUser().getScreenName());
+        tweetTime.setText(getTweetDate(status));
         tweetContent.setText(status.getText());
         userIcon.setImage(new Image(status.getUser().getBiggerProfileImageURL()));
         setFavoriteMark(status);
@@ -158,7 +164,7 @@ public class TweetPaneController extends ListCell<Status> {
             favSvg.setFill(Paint.valueOf("c6c6c6"));
         }
     }
-
+    
     public AnchorPane getTheColumn() {
         return theColumn;
     }
